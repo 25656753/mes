@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link rel="stylesheet"   th:href="@{bootstrap4/css/bootstrap.min.css}"></link>
+
+</head>
+<body>
+<p>home</p>
+<select style="width: 200px;height: 30px;">
+    <option value="1">张</option>
+    <option value="2">李</option>
+    <option value="3">工</option>
+</select>
+
+<p th:id="pp" th:text="${#dates.createToday()}"></p>
+<p id="d">gdgdf</p>
+
+<script type="application/javascript"  th:src="@{bootstrap4/js/jquery3.2.1.min.js}"></script>
+<script type="application/javascript"  th:src="@{bootstrap4/js/bootstrap.min.js}"></script>
+<script type="application/javascript"  th:src="@{bootstrap4/js/bootstrap.bundle.min.js}"></script>
+<script type="application/javascript"  th:src="@{js/t1.js}"></script>
+
+</body>
+</html>

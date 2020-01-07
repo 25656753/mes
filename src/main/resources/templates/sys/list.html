@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link rel="stylesheet"   href="css/t1.css"></link>
+<style type="text/css">
+    .tt{
+        box-sizing: border-box;
+        padding-top: 400px;
+        text-align: center;
+        background: aqua;
+        width: 400px;
+        height: 70px;
+        border-radius: 20px;
+        line-height: 70px;
+        box-shadow: 10px 10px  5px #888888 ;
+      transform: rotate(45deg);
+    }
+
+</style>
+</head>
+<body>
+<div class="tt">
+    HHH
+
+</div>
+
+
+
+<table>
+    <tbody>
+    <tr th:each="i:${condata}">
+        <td th:text="${iStat.odd}"></td>
+     <td th:text="${i.deptname}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

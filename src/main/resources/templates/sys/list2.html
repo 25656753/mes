@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style th:inline="css" type="text/css" >
+        html,body
+        {
+            width: 100%;
+            height: 100%;
+             margin: 0px;
+
+            background: url(Images/startbackimg.png)  no-repeat;
+            background-size: 50% 50%;
+            background-position: center center;
+
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+      .a
+      {
+          box-sizing: content-box;
+background: transparent;
+
+          height: 100px;
+          padding: 50px;
+          color:darkgreen;
+          font-family: 微软雅黑;
+          font-weight: bolder;
+          font-size: 60px;
+          cursor: pointer;
+      }
+        .b{
+            font-family: myfont;
+          /*  box-sizing: border-box;
+            background: linear-gradient(to right, red , yellow);
+      word-wrap: normal;
+         width: 100px;
+           height: 50px;
+          padding: 50px;*/
+        }
+        @font-face {
+            font-family: "myfont";
+            src:url("fonts/iconfont.ttf") format("truetype");
+        }
+        .icon_text {
+            font-family: "myfont";
+            position: absolute;
+            top: 50px;
+           font-size: 2em;
+            color: blue;
+            text-shadow: 5px 5px 5px blue;
+            border: 1px solid #ff6a1b;
+            box-shadow: 10px 10px 5px #888888;
+            transform: scale(5,2);
+            width: 160px;
+            height: 160px;
+        }
+
+        .icon_text:hover{
+            width: 440px;
+            height: 440px;
+           transform: rotate(360deg);
+
+        }
+
+/*
+        .icon_text:after {
+           content: "\e606";
+        }*/
+    </style>
+</head>
+<body>
+
+<div class="a">
+    小小大世界
+</div>
+<div class="icon_text" >小小大世界</div>
+</body>
+</html>
