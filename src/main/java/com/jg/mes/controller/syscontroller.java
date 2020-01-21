@@ -21,6 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 @Transactional
@@ -65,10 +69,14 @@ public class syscontroller {
         moduleDao.save(module);*/
        // Pageable pageable=PageRequest.of(0,2);
        // Page<User> users=userdao.findAll(pageable);
-        List<User> users=userdao.inall();
+
+        AtomicReference<Thread>  tt=new AtomicReference<>();
+        ThreadPoolExecutor pool=new ThreadPoolExecutor(2,3,5L,
+                TimeUnit.SECONDS,new LinkedBlockingQueue<Runnable>());
+                List < User > users = userdao.inall();
         logger.error(users.size()+"");
         userdao.ina("402883346e43d7d6016e43f73e940003","aa");
-        return "sys/home";
+        return "sys/list1";
     }
 
     @Autowired
