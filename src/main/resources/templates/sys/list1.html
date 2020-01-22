@@ -14,20 +14,49 @@
     <!--<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">-->
     <!-- 引入组件库 -->
     <!--<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
+<style type="text/css">
+    .el-col:nth-of-type(odd) {
+        background: #00ff00;
+    }
+</style>
+
 </head>
 <body >
-<div>小小大视界</div>
+
 <div id="rrapp">
-<el-button type="primary">主要按钮</el-button>
-<el-button type="success">成功按钮</el-button>
-<el-button type="info">信息按钮</el-button>
-<el-button type="warning">警告按钮</el-button>
-<el-button type="danger">危险按钮</el-button>
+
+        <el-table
+                :data="data"
+                style="width: 100%">
+            <el-table-column
+                    prop="username"
+                    label="姓名"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="inhere"
+                    label="入职日期"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="deptcode.deptname"
+                    label="部门">
+            </el-table-column>
+        </el-table>
+
+
 </div>
 
 <script type="text/javascript" th:inline="javascript">
+
+
+
+
+
     var vm = new Vue({
-        el : '#rrapp'
+        el : '#rrapp',
+        data :{data:JSON.parse([[${data}]])
+        }
     });
 </script>
 </body>

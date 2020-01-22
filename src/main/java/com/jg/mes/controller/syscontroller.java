@@ -1,10 +1,12 @@
 package com.jg.mes.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jg.mes.Anno.TargetDataSource;
 import com.jg.mes.dao.DeptDao;
 import com.jg.mes.dao.ModuleDao;
 import com.jg.mes.dao.UserDao;
+import com.jg.mes.entities.Dept;
 import com.jg.mes.entities.Module;
 import com.jg.mes.entities.User;
 import com.jg.mes.service.DeptService;
@@ -12,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
-@Transactional
 public class syscontroller {
     final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
@@ -45,39 +45,55 @@ public class syscontroller {
     private ObjectMapper objectMapper;
 
     @GetMapping("/")
-
-    public String home() {
+    public String home(ModelMap map) throws JsonProcessingException {
        /* Dept dept = new Dept();
         dept.setDeptname("工程部");
         deptdao.save(dept);
         Module module = new Module();
         module.setMname("aa");
         Set<User> users = new HashSet<>();
+*/
 
 
-        User user = new User("jam", new Date(), dept);
-        users.add(user);
-        deptdao.save(dept);
-        User user1 = new User("张三古", new Date(), dept);
-        users.add(user1);
-
-        module.setUsers(users);
 
 
-        userdao.save(user);
-        userdao.save(user1);
-        moduleDao.save(module);*/
+      //  User user1 = new User("张三古", new Date(), null);
+      //  userdao.save(user1);
+
+
+
        // Pageable pageable=PageRequest.of(0,2);
        // Page<User> users=userdao.findAll(pageable);
 
         AtomicReference<Thread>  tt=new AtomicReference<>();
         ThreadPoolExecutor pool=new ThreadPoolExecutor(2,3,5L,
                 TimeUnit.SECONDS,new LinkedBlockingQueue<Runnable>());
-                List < User > users = userdao.inall();
-        logger.error(users.size()+"");
-        userdao.ina("402883346e43d7d6016e43f73e940003","aa");
-        return "sys/list1";
+                List <User> users = userdao.findAll();
+
+       // userdao.ina("402883346e43d7d6016e43f73e940003","aa");
+      //  objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+      //  SimpleDateFormat myDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+/*    //    objectMapper.setConfig()
+       // objectMapper.getSerializationConfig().setDateFormat(myDateFormat);*/
+
+         System.out.println("---------"+users);
+
+        map.put("data",objectMapper.writeValueAsString(users));
+
+
+      //  logger.error(users.get(0).getDeptCode().getDeptname()+"=======");
+        return "layout";
     }
+
+    @GetMapping("/pp")
+    @ResponseBody
+    public List<Dept>  ppp()
+    {
+        List <Dept> depts = deptdao.findAll();
+        return depts;
+    }
+
+
 
     @Autowired
     DataSource dataSource;

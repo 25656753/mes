@@ -1,6 +1,6 @@
 package com.jg.mes.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties(value = {"deptcode","deptCode","hibernateLazyInitializer"})
+//@JsonIgnoreProperties(value = {"deptcode","deptCode","hibernateLazyInitializer"})
 public class User  {
 
     @GeneratedValue(generator = "uuid")
@@ -20,13 +20,12 @@ public class User  {
     private  String username;
 
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date  inhere;
 
-    @OneToOne(fetch= FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name="deptid", unique = false)
-   /* @JoinColumn(name="deptid",foreignKey = @ForeignKey(name = "DeptID",value = ConstraintMode.NO_CONSTRAINT),
-            unique = false)*/
-
+    @ManyToOne()
+    @JoinColumn(name="deptid",columnDefinition = "varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL")
+   // @NotFound(action= NotFoundAction.IGNORE)//代表可以为空，允许为null
     private Dept DeptCode;
 
 

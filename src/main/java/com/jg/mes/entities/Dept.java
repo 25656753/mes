@@ -1,13 +1,15 @@
 package com.jg.mes.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties(value = {"users"})
+//@JsonIgnoreProperties(value = {"users"})
 public class Dept {
 
     @Id
@@ -19,10 +21,11 @@ public class Dept {
     private  String deptname;
 
 //    @OneToMany(fetch= FetchType.LAZY,cascade = CascadeType.MERGE,mappedBy = "DeptCode")
-   @OneToMany(fetch= FetchType.LAZY,cascade = CascadeType.MERGE)
-   @JoinColumn(name="deptid")
-
-    private List<User> users;
+   @OneToMany(fetch= FetchType.LAZY,cascade = CascadeType.MERGE,mappedBy = "DeptCode")
+  // @JoinColumn(name="deptid")
+   @NotFound(action= NotFoundAction.IGNORE)//代表可以为空，允许为null
+   @JsonBackReference
+   private List<User> users;
 
     public String getDeptname() {
         return deptname;

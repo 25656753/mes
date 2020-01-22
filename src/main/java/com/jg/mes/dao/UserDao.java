@@ -16,7 +16,7 @@ public interface UserDao extends JpaRepository<User,String> {
     int countByusername(String name);
 
     @Query(value = "select u from User u ")
-   List<User> inall();
+    List<User> inall();
 
     @Modifying
     @Query(value = "update User u  set u.username=:name where u.userid=:id")

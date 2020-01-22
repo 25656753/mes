@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>中科芯海智能科技有限公司 - 临床诊断与生命科学领域仪器设备研发制造商 - masschip</title>
+    <meta name="keywords" content="中科芯海智能科技有限公司,中科芯海,芯海白细胞计数仪,白细胞计数仪,芯海白细胞分析仪,白细胞分析仪"/>
+    <meta name="description" content="中科芯海智能科技有限公司 -  临床诊断与生命科学领域仪器设备研发制造商 - masschip"/>
+    <meta name="author" content="中科芯海智能科技有限公司,中科芯海,芯海白细胞计数仪,白细胞计数仪,芯海白细胞分析仪,白细胞分析仪"/>
+    <link rel="icon" type="image/x-icon" href="/static/images/companylogo.jpg">
+    <script th:src="@{js/vue.min.js}"></script>
+
+    <!--引入样式 -->
+    <link rel="stylesheet" th:href="@{js/element-ui/lib/theme-chalk/index.css}">
+    <!--引入组件库-->
+    <script th:src="@{js/element-ui/lib/index.js}"></script>
+
+<style>
+    htm,body{
+        margin: 0px;
+        padding: 0px;
+        border: none;
+    }
+    #app{
+        padding: 0px 2px;
+    }
+    .el-main{
+        min-height: calc(100vh - 180px)
+    }
+
+</style>
+
+</head>
+
+
+<body>
+<div  id="app">
+<template>
+    <el-container >
+        <el-header style="background:#665555"   height="120px" >Header</el-header>
+        <el-container style="background:#cf3665" >
+            <el-aside  style="background:#ff8665" width="200px">Aside</el-aside>
+            <el-main>Main</el-main>
+        </el-container>
+        <el-footer height="60px" style="background:#1fF665">Footer</el-footer>
+    </el-container>
+</template>
+</div>
+<script type="text/javascript" th:inline="javascript">
+
+    var vm = new Vue({
+        el : '#app',
+
+
+    });
+</script>
+
+
+
+
+
+</body>
+</html>
