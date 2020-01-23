@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+        th:replace="share/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="mainbody" style="background: #0b2e13;width: 100%;min-height: 95%;">
+    <p >ttt</p>
+
+</div>
+<script  type="text/javascript" th:inline="javascript" th:fragment="js">
+vm.$data.test="fssdfs"
+
+</script>
+</body>
+</html>

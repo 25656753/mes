@@ -82,7 +82,7 @@ public class syscontroller {
 
 
       //  logger.error(users.get(0).getDeptCode().getDeptname()+"=======");
-        return "layout";
+        return "sys/list5";
     }
 
     @GetMapping("/pp")
